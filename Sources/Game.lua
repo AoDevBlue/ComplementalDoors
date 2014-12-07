@@ -8,6 +8,7 @@ local Game = {
     timer = 0,
     flashTime = 0.5,
     generateFlash = false,
+    orbImage = love.graphics.newImage("assets/Orb1.png")
 }
 Game.__index = Game
 
@@ -98,6 +99,14 @@ function Game:draw()
     for i=1,#self.orbs do
         self.orbs[i]:draw()
     end
+
+    
+    love.graphics.setColor(white)
+    love.graphics.draw(self.orbImage,20,570)
+    love.graphics.setFont(fontTiny)
+    love.graphics.print(self.nbOrbs .. " / 7",45, 570)
+    love.graphics.print("M to Mute",720, 570)
+    love.graphics.setFont(fontNormal)
     if self.generateFlash then
         love.graphics.setColor(255,255,255,255*(self.flashTime - self.timer))
         love.graphics.rectangle("fill",0,0,800,600)

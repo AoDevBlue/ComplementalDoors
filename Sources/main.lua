@@ -36,6 +36,7 @@ inDialog = true
 dialogIndex = 1
 dialogs = {"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"}
 dialogTime = {4,3,4,4,3}
+-- dialogTime = {0,0,0,0,0}
 dialogTimer = 0
 onEndScreen = false
 
@@ -80,10 +81,6 @@ function love.draw()
 		love.graphics.setFont(fontNormal)
 	elseif not onEndScreen then
 		game:draw()
-		love.graphics.setFont(fontTiny)
-		love.graphics.setColor(white)
-		love.graphics.print("M to Mute",720, 570)
-		love.graphics.setFont(fontNormal)
 	else
 		love.graphics.setColor(255,255,255,255)
 		love.graphics.draw(endScreen, 0, 0)
