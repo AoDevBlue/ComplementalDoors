@@ -32,7 +32,7 @@ mute = false
 keyboardInput = {}
 inDialog = true
 dialogIndex = {1,1}
-dialogs = {{"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"},{"I did it.","I feel ... alive","I feel ... alive\nAm I?","Created by Aomeas for LD31","Thanks for playing!"}}
+dialogs = {{"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"},{"I did it.","I feel... alive","I feel ... alive\nAm I?","Created by Aomeas for LD31","Thanks for playing!"}}
 dialogTime = {{4,3,4,4,3},{3,3,2,4,2}}
 dialogTimer = 0
 
@@ -112,7 +112,8 @@ function collision(x1,y1,w1,h1,x2,y2,w2,h2)
         return true
     end
 end
-
+--[[
 function love.mousepressed(x, y, button)
 	print(x,y)
 end
+]]--

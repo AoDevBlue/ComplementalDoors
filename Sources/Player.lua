@@ -33,7 +33,7 @@ function Player.new( position, nbOrbs )
 end
 
 function Player:update(dt, currentLevel)
-	if keyboardInput["q"] then
+	if keyboardInput["a"] then
 		self.vx = -self.vmax
 		self.direction = -1
 	end
@@ -41,7 +41,7 @@ function Player:update(dt, currentLevel)
 		self.vx = self.vmax
 		self.direction = 1
 	end
-	if keyboardInput["z"] then
+	if keyboardInput["w"] or keyboardInput[" "] then
 		if not currentLevel:isFree(self.x, self.y + 1, self.w, self.h) then
 			self.vy = -2.5*self.vmax
 			self.jumping = true
