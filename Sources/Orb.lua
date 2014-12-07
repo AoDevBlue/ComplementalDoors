@@ -29,33 +29,40 @@ function Orb:update( dt, player )
 	if collision(player.x,player.y,player.w,player.h,self.x,self.y+self.dy,self.w,self.h) then
 		player.orbs = player.orbs + 1
 		self.taken = true
-		if not mute then
-			orbTaken:play()
-		end
 		if player.orbs == 1 then
 			musicPiano:setVolume(0.2)
 			musicPiano:setPitch(0.30)
+			orbTaken:setPitch(0.4)
 			if not mute then
 				musicPiano:play()
 			end
 		elseif player.orbs == 2 then
 			musicPiano:setVolume(0.25)
 			musicPiano:setPitch(0.35)
+			orbTaken:setPitch(0.5)
 		elseif player.orbs == 3 then
 			musicPiano:setVolume(0.3)
 			musicPiano:setPitch(0.40)
+			orbTaken:setPitch(0.6)
 		elseif player.orbs == 4 then
 			musicPiano:setVolume(0.35)
 			musicPiano:setPitch(0.45)
+			orbTaken:setPitch(0.7)
 		elseif player.orbs == 5 then
 			musicPiano:setVolume(0.4)
 			musicPiano:setPitch(0.50)
+			orbTaken:setPitch(0.8)
 		elseif player.orbs == 6 then
 			musicPiano:setVolume(0.45)
 			musicPiano:setPitch(0.55)
+			orbTaken:setPitch(0.9)
 		elseif player.orbs == 7 then
 			musicPiano:setVolume(0.5)
-			musicPiano:setPitch(0.60)
+			musicPiano:setPitch(0.70)
+			orbTaken:setPitch(1)
+		end
+		if not mute then
+			orbTaken:play()
 		end
 	end
 end
