@@ -33,8 +33,7 @@ keyboardInput = {}
 inDialog = true
 dialogIndex = {1,1}
 dialogs = {{"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"},{"I did it.","I feel ... alive","I feel ... alive\nAm I?","Created by Aomeas for LD31","Thanks for playing!"}}
--- dialogTime = {{4,3,4,4,3},{3,3,4,2}}
-dialogTime = {{0,0,0,0,0},{3,3,2,4,2}}
+dialogTime = {{4,3,4,4,3},{3,3,2,4,2}}
 dialogTimer = 0
 
 

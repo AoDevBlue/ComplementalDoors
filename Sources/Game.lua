@@ -19,7 +19,7 @@ local Orb = require 'Orb'
 
 function Game.new()
     local self = setmetatable({}, Game)
-    self.player = Player.new({45,45},7)
+    self.player = Player.new({45,45},0)
     self.level = Level.new(self.player)
     self.index = self.level.index
     for i=1,#LevelBase[self.level.index][3] do
