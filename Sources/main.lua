@@ -8,8 +8,6 @@ fontBig = love.graphics.newFont("assets/East-Coast-Stationery.ttf", 64)
 fontTiny = love.graphics.newFont("assets/East-Coast-Stationery.ttf", 16)
 love.graphics.setFont(fontNormal)
 
-endScreen = love.graphics.newImage("assets/endScreen.png")
-
 lighterGrey = {220,220,220,255}
 lightGrey = {190,190,190,255}
 mediumGrey = {120,120,120,255}
@@ -33,12 +31,11 @@ musicPiano:setLooping(true)
 mute = false
 keyboardInput = {}
 inDialog = true
-dialogIndex = 1
-dialogs = {"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"}
-dialogTime = {4,3,4,4,3}
--- dialogTime = {0,0,0,0,0}
+dialogIndex = {1,1}
+dialogs = {{"Where... Where am I?","Did I just die?","Who's talking to me?","Seven life orbs?","I am... a ghost?"},{"I did it.","I feel ... alive","I feel ... alive\nAm I?","Created by Aomeas for LD31","Thanks for playing!"}}
+-- dialogTime = {{4,3,4,4,3},{3,3,4,2}}
+dialogTime = {{0,0,0,0,0},{3,3,2,4,2}}
 dialogTimer = 0
-onEndScreen = false
 
 
 function love.load()
@@ -55,16 +52,20 @@ function love.update(dt)
 	if not inDialog then
 		game:update(dt)
 		if game.nbOrbs == 7 then
-			onEndScreen = true
+			inDialog = true
 		end
 	else
 		dialogTimer = dialogTimer + dt
-		if dialogTimer > dialogTime[dialogIndex] then
+		if dialogTimer > dialogTime[dialogIndex[1]][dialogIndex[2]] then
 			dialogTimer = 0
-			if dialogIndex ~= #dialogs then
-				dialogIndex = dialogIndex + 1
+			if dialogIndex[2] ~= #dialogs[dialogIndex[1]] then
+				dialogIndex[2] = dialogIndex[2] + 1
 			else
-				inDialog = false
+				if dialogIndex[1] == 1 then
+					dialogIndex[1] = 2
+					dialogIndex[2] = 1
+					inDialog = false
+				end
 			end
 		end
 	end
@@ -77,13 +78,10 @@ function love.draw()
 		love.graphics.rectangle("fill",0,0,800,600)
 		love.graphics.setFont(fontNormal)
 		love.graphics.setColor(white)
-		love.graphics.printf(dialogs[dialogIndex],200, 280, 400,"center")
+		love.graphics.printf(dialogs[dialogIndex[1]][dialogIndex[2]],200, 280, 400,"center")
 		love.graphics.setFont(fontNormal)
-	elseif not onEndScreen then
-		game:draw()
 	else
-		love.graphics.setColor(255,255,255,255)
-		love.graphics.draw(endScreen, 0, 0)
+		game:draw()
 	end
 end
 
