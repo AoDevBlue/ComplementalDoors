@@ -32,8 +32,10 @@ end
 
 function Game:update(dt)
     self.player:update(dt, self.level)
-    if self.nbOrbs ~= self.player.orbs and self.player.orbs < 7 then
-        self.level:loadTileset(self.player.orbs)
+    if self.nbOrbs ~= self.player.orbs then
+        if self.player.orbs < 7 then
+            self.level:loadTileset(self.player.orbs)
+        end
         self.nbOrbs = self.player.orbs
         self.generateFlash = true
     end

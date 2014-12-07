@@ -33,6 +33,7 @@ musicPiano:setLooping(true)
 mute = false
 keyboardInput = {}
 inDialog = false
+onEndScreen = false
 
 
 function love.load()
@@ -48,6 +49,10 @@ end
 function love.update(dt)
 	if not inDialog then
 		game:update(dt)
+		if game.nbOrbs == 7 then
+			inDialog = true
+			onEndScreen = true
+		end
 	end
 end
 
@@ -57,6 +62,10 @@ function love.draw()
 	love.graphics.setColor(white)
 	love.graphics.print("M to Mute",720, 570)
 	love.graphics.setFont(fontNormal)
+	if onEndScreen then
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.draw(endScreen, 0, 0)
+	end
 end
 
 function love.keypressed( key, isrepeat )
