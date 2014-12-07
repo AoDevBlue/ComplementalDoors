@@ -73,7 +73,11 @@ function Game:update(dt)
         i = i + 1
     end
     if self.player.life == 0 then
-        self.player = Player.new({(self.level.lastDoorPosition[2]-1)*40,(self.level.lastDoorPosition[1]-1)*40},self.player.orbs)
+        if self.level.lastDoorSide == 1 then
+            self.player = Player.new({(self.level.lastDoorPosition[2]-1/2)*40,(self.level.lastDoorPosition[1]-1)*40},self.player.orbs)
+        else
+            self.player = Player.new({(self.level.lastDoorPosition[2]-1)*40,(self.level.lastDoorPosition[1]-1)*40},self.player.orbs)
+        end
     end
     if self.generateFlash then
         self.timer = self.timer + dt
